@@ -1,6 +1,7 @@
 package me.romo.linkbroker.linkserver;
 
 import me.romo.linkbroker.protocol.LinkPacket;
+import me.romo.linkbroker.protocol.defaults.HandShakePacket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +17,7 @@ public class LinkServer {
         this.linkServerSession = linkServerSession;
     }
 
-    public InetSocketAddress getAddress(){
+    public InetSocketAddress getRemoteAddress(){
         return this.linkServerSession.getRemoteAddress();
     }
 
@@ -26,5 +27,9 @@ public class LinkServer {
 
     public Logger getLogger() {
         return logger;
+    }
+
+    public void onHandShakePacket(HandShakePacket packet){
+
     }
 }

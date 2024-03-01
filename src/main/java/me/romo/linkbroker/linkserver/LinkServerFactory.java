@@ -9,6 +9,6 @@ public class LinkServerFactory {
     private final Map<InetSocketAddress, LinkServer> linkServers = new HashMap<>();
 
     public void addLinkServer(LinkServer linkServer){
-        this.linkServers.put(linkServer.getAddress(), linkServer);
+        this.linkServers.put(linkServer.getRemoteAddress(), linkServer);
     }
 }
