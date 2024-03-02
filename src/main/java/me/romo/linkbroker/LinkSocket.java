@@ -14,10 +14,9 @@ import org.slf4j.LoggerFactory;
 import java.net.InetSocketAddress;
 
 public class LinkSocket extends Thread{
-
     private final Logger logger = LoggerFactory.getLogger("LinkSocket");
 
-    private int port;
+    private final int port;
 
     private final EventLoopGroup bossLoopGroup;
     private final EventLoopGroup eventLoopGroup;

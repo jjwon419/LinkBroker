@@ -30,6 +30,8 @@ public class LinkBrokerApplication {
 
     private static LinkSocket linkSocket;
 
+    private static final int protocolVersion = 1;
+
     public static void main(String[] args) {
         SpringApplication.run(LinkBrokerApplication.class, args);
         loadConfig();
@@ -56,6 +58,9 @@ public class LinkBrokerApplication {
         }
     }
 
+    public static LinkSocket getLinkSocket() {
+        return linkSocket;
+    }
 
     public static String getPassword() {
         return password;
@@ -71,5 +76,9 @@ public class LinkBrokerApplication {
 
     public static LinkServerFactory getLinkServerFactory() {
         return linkServerFactory;
+    }
+
+    public static int getProtocolVersion() {
+        return protocolVersion;
     }
 }

@@ -1,6 +1,7 @@
 package me.romo.linkbroker.protocol;
 
 import me.romo.linkbroker.protocol.defaults.HandShakePacket;
+import me.romo.linkbroker.protocol.defaults.HandShakeResultPacket;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ public class PacketFactory {
 
     public PacketFactory(){
         register(new HandShakePacket());
+        register(new HandShakeResultPacket());
     }
 
     public void register(LinkPacket linkPacket){

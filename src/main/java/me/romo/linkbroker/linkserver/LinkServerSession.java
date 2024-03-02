@@ -41,4 +41,8 @@ public class LinkServerSession {
     public InetSocketAddress getRemoteAddress() {
         return remoteAddress;
     }
+
+    public void disconnect(){
+        this.channel.close();
+    }
 }

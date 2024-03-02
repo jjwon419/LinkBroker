@@ -21,14 +21,7 @@ public class ReadPacketHandler extends SimpleChannelInboundHandler<LinkPacket> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LinkPacket packet) throws Exception {
-        System.out.println(packet.getPacketId());
-        if(packet instanceof LinkServerPacket){
-            //TODO: send packet to link servers
-            return;
-        }
-
-
-        packet.handle(linkServer);
+        packet.handle(linkServer.getPacketHandler());
     }
 
     @Override

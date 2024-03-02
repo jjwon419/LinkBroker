@@ -2,15 +2,23 @@ package me.romo.linkbroker.protocol;
 
 import io.netty.buffer.ByteBuf;
 import me.romo.linkbroker.linkserver.LinkServer;
+import me.romo.linkbroker.protocol.handler.PacketHandler;
 
 public class LinkServerPacket extends LinkPacket{
 
     private final byte packetId;
 
+    private LinkServer targetServer;
+
     private ByteBuf byteBuf;
 
     public LinkServerPacket(byte packetId){
         this.packetId = packetId;
+    }
+
+    public LinkServerPacket(byte packetId, LinkServer targetServer){
+        this.packetId = packetId;
+        this.targetServer = targetServer;
     }
 
     @Override
@@ -29,7 +37,15 @@ public class LinkServerPacket extends LinkPacket{
     }
 
     @Override
-    public void handle(LinkServer linkServer) {
-        return;
+    public boolean handle(PacketHandler packetHandler) {
+        return true;
+    }
+
+    public LinkServer getTargetServer() {
+        return targetServer;
+    }
+
+    public void setTargetServer(LinkServer targetServer) {
+        this.targetServer = targetServer;
     }
 }
