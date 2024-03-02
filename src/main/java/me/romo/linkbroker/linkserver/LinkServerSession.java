@@ -43,6 +43,7 @@ public class LinkServerSession {
     }
 
     public void disconnect(){
+        this.run();
         this.channel.close();
     }
 }
