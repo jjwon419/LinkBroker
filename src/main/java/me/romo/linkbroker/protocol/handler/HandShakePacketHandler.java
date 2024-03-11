@@ -28,12 +28,21 @@ public class HandShakePacketHandler extends PacketHandler{
             return true;
         }
 
+        //CHECK PASSWORD
         if(!Objects.equals(packet.getPassword(), LinkBrokerApplication.getPassword())){
             HandShakeResultPacket resultPacket = new HandShakeResultPacket();
             resultPacket.setCode(HandShakeResultCode.INVALID_PASSWORD);
             this.linkServer.sendPacket(resultPacket);
             this.linkServer.disconnect();
             return true;
+        }
+
+        //CHECK SERVER NAME
+        if(LinkBrokerApplication.getLinkServerFactory().getLinkServerByName(packet.getName()) != null){
+            HandShakeResultPacket resultPacket = new HandShakeResultPacket();
+            resultPacket.setCode(HandShakeResultCode.ALREADY_EXIST_SERVER_NAME);
+            this.linkServer.sendPacket(resultPacket);
+            this.linkServer.disconnect();
         }
 
         HandShakeResultPacket resultPacket = new HandShakeResultPacket();
